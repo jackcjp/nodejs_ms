@@ -7,6 +7,7 @@
 #
 FROM       reg.leadstec.com/nodejs:latest
 MAINTAINER Jpchen <jpchen@leadstec.com>
+LABEL leadstec-notes_base-build="0.1.0-{{PIPELINE_BUILD_NUMBER}}"
 
 # install packages
 RUN apk --update add make git nodejs && \
