@@ -1,0 +1,14 @@
+nodejs_ms:
+  build: .
+  ports:
+    - "41439:3000"
+    - "41438:22"
+  volumes:
+    - /var/lib/docker/vfs/dir/logcenter/nodejs_ms-dev.microservice.com:/data/log
+    - /var/lib/docker/vfs/dir/datacenter/nodejs_ms-dev.microservice.com:/data/persist
+  environment:
+    - EMAIL=jpchen@leadstec.com
+    - ENGINE=localhost
+    - ENABLE_SSHD=true
+    - PORT=3000
+  hostname: nodejs_ms-dev.microservice.com
