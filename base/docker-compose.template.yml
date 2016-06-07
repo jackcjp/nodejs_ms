@@ -7,7 +7,7 @@ nodejs_ms:
     - /var/lib/docker/vfs/dir/logcenter/nodejs_ms-dev.microservice.com:/data/log
     - /var/lib/docker/vfs/dir/datacenter/nodejs_ms-dev.microservice.com:/data/persist
   environment:
-    - EMAIL=jpchen@leadstec.com
+    - EMAIL=user@leadstec.com
     - ENGINE=localhost
     - ENABLE_SSHD=true
     - PORT=3000
