@@ -59,14 +59,14 @@ module.exports ={
   },
   index: function(req, res) {
     res.render('index', {
-      title: this.dbName,
-      content: 'The '+this.dbName+' server is running ~'
+      title: module.exports.dbName,
+      content: 'The '+module.exports.dbName+' server is running ~'
     });
   },
   getApi: function(req, res) {
     var varUrl = req.url.split('/');
     var filename = varUrl[2];
-    var path = '../../app/api/'+filename;
+    var path = '/data/app/app/api/'+filename;
 
     fs.stat(path,function (error,s){
       if(!error && s.isFile()){
