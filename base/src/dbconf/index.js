@@ -60,7 +60,8 @@ module.exports ={
   index: function(req, res) {
     res.render('index', {
       title: module.exports.dbName,
-      content: 'The '+module.exports.dbName+' server is running ~'
+      content: 'The '+module.exports.dbName+' server is running with '
+      + module.exports.dbMode +'~'
     });
   },
   getApi: function(req, res) {
