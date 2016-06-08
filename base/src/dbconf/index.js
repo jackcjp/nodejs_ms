@@ -7,7 +7,7 @@ var http = require('http');
 var querystring = require('querystring');
 var jsonserverConf = require('../json-server');
 const exec = require('child_process').exec;
-var dbName = '{{TASK_DBNAME}}';
+var dbName = '{{ROUTE_JSDBNAME}}';
 // var dbName = 'tasks';
 
 module.exports ={
@@ -95,10 +95,10 @@ module.exports ={
         str += chunk;
       });
       response.on('end', function(){
-        callback(str);
+        callback(str,response.statusCode);
       });
       response.on('error', function(error){
-        callback(error);
+        callback(error,response.statusCode);
       });
     }).on('error', function(e) {
         console.log('get error: ' + e.message);
