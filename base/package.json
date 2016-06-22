@@ -1,7 +1,7 @@
 {
   "name": "nodejs_ms",
   "description": "nodejs ms with json-server",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "author": "Jpchen <jpchen@leadstec.com>",
   "license": "Leadstec Commercial License",

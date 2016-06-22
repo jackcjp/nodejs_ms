@@ -7,10 +7,10 @@
 #
 FROM       reg.leadstec.com/nodejs:latest
 MAINTAINER Jpchen <jpchen@leadstec.com>
-LABEL leadstec-nodejs_ms-build="0.2.0-{{PIPELINE_BUILD_NUMBER}}"
+LABEL leadstec-nodejs_ms-build="0.3.0-{{PIPELINE_BUILD_NUMBER}}"
 
 # set environment variables
-ENV NODEJS_MS_VERSION="0.2.0"
+ENV NODEJS_MS_VERSION="0.3.0"
 
 # install packages
 RUN apk --update add make git nodejs && \

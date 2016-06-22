@@ -2,66 +2,28 @@
 /**
  * Module dependencies.
  */
-var fs = require('fs');
-var http = require('http');
-var querystring = require('querystring');
-var jsonserverConf = require('../json-server');
-const exec = require('child_process').exec;
-var dbName = '{{ROUTE_JSDBNAME}}';
-// var dbName = 'tasks';
+var fs = require('fs'),
+  http = require('http'),
+  querystring = require('querystring'),
+  jsonserverConf = require('../json-server');
+var spawn = require('child_process').spawn;
 
 module.exports ={
   dbMode: '{{BACKEND_DBMODE}}',
   // dbMode: 'json-server',
-  dbName: dbName,
-  uri: 'json-server://localhost:'+jsonserverConf.port+'/'+dbName,
+  uri: 'json-server://localhost:'+jsonserverConf.port+'/db.json',
   options:{
     port:jsonserverConf.port
   },
   startServer: function() {
-      this.options.path = '/'+this.dbName;
-      var spawn = require('child_process').spawn;
-      var child = spawn('json-server', [
-        '-w', './dbconf/db.json'
-      ]);
-      console.dir('starting json-server');
-      child.stdout.on('data', function(chunk) {
-        console.log(chunk.toString());
-      });
-      child.stderr.on('data', function (data) {
-        console.log('stderr: ' + data);
-      });
-
-      // wait for database server up
-      var addDB=  function(){
-        const cmddb = 'echo \'{"'+module.exports.dbName+'": []}\' > ./dbconf/db.json';
-        exec(cmddb, function(error, stdout, stderr) {
-          console.log('stdout: ' + stdout);
-          if (error !== null) {
-            console.log('exec error: ' + error);
-          }
-        });
-      };
-      setTimeout(function(){
-          http.get(module.exports.options, function(res){
-            console.dir('~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-            console.dir(res.statusCode);
-            if(res.statusCode === 404){
-              console.dir('No database db.json here, create one!');
-              addDB();
-            }
-            console.dir('~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-          }).on('error',function(e){
-            console.error(e);
-            console.dir('Opps,the database server is not up, please check in!');
-          });
-        }, 2000);
-  },
-  index: function(req, res) {
-    res.render('index', {
-      title: module.exports.dbName,
-      content: 'The '+module.exports.dbName+' server is running with '
-      + module.exports.dbMode +'~'
+    var child = spawn('json-server', [
+      '-w', './dbconf/db.json'
+    ]);
+    child.stdout.on('data', function(chunk) {
+      console.log(chunk.toString());
+    });
+    child.stderr.on('data', function (data) {
+      console.log('stderr: ' + data);
     });
   },
   getApi: function(req, res) {
@@ -88,8 +50,8 @@ module.exports ={
     var vetVar = JSON.stringify(params);
         params = JSON.parse(vetVar);
     var contents = querystring.stringify(params);
-      // console.dir(this.options);
-    var request = http.request(this.options, function(response){
+    // console.dir(this.options);
+    var request = http.request(module.exports.options, function(response){
       var str = '';
       response.setEncoding('utf-8');
       response.on('data', function (chunk) {
