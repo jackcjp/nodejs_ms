@@ -4,7 +4,7 @@
 
 **0.3.0**
 
-* 改变db创建方式，由系统初始化db.json文件并创建db改为backend端创建
+* 改变db创建方式，由系统创建db.json文件并初始化db，改为backend端创建
 * 删除ENV的ROUTE_JSDBNAME
 
 **0.2.1**
