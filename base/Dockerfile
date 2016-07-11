@@ -1,7 +1,7 @@
 #
-# AUTHOR            Jpchen <jpchen@leadstec.com>
+# AUTHOR            Jpchen <jpchen@example.com>
 # DOCKER-VERSION    1.9.1
-# Copyright         (C) 2015 Leads Technologies Ltd. All rights reserved.
+# Copyright         (C) 2015 example Technologies Ltd. All rights reserved.
 #
 # Description       Dockerfile for Nodejs MS base on nodejs
 #
