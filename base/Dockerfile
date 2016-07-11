@@ -7,7 +7,7 @@
 #
 FROM       reg.lxxxxx.com/nodejs:latest
 MAINTAINER Jpchen <jpchen@lxxxxx.com>
-LABEL leadstec-nodejs_ms-build="0.3.0-{{PIPELINE_BUILD_NUMBER}}"
+LABEL example-nodejs_ms-build="0.3.0-{{PIPELINE_BUILD_NUMBER}}"
 
 # set environment variables
 ENV NODEJS_MS_VERSION="0.3.0"
