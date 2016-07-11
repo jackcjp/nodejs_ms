@@ -5,8 +5,8 @@
 #
 # Description       Dockerfile for Nodejs MS base on nodejs
 #
-FROM       reg.leadstec.com/nodejs:latest
-MAINTAINER Jpchen <jpchen@leadstec.com>
+FROM       reg.lxxxxx.com/nodejs:latest
+MAINTAINER Jpchen <jpchen@lxxxxx.com>
 LABEL leadstec-nodejs_ms-build="0.3.0-{{PIPELINE_BUILD_NUMBER}}"
 
 # set environment variables
